@@ -19,7 +19,7 @@
          * @var array
          */
         protected $fillable = [
-            'name', 'email', 'telefono', 'password',
+            'name', 'primer_apellido', 'segudo_apellido', 'email', 'telefono', 'password',
         ];
 
         /**
