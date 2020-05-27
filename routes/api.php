@@ -24,5 +24,5 @@ Route::get('getAuth', 'UserController@getAuthenticatedUser');
 Route::post('logout', 'UserController@logout');
 
  Route::group(['middleware' => ['jwt.verify']], function() {
-       /*AÑADE AQUI LAS RUTAS QUE QUIERAS PROTEGER CON JWT; ES DECIR LAS RUTAS QUE SON PRIVADAS*/
+       Route::resource('violencemeters', 'ViolencemeterController');
  });
