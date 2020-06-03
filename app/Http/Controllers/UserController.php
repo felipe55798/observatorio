@@ -31,11 +31,11 @@ class UserController extends Controller
                     return response()->json(['user_not_found'], 404);
             }
             } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-                    return response()->json(['token_expired'], $e->getStatusCode());
+                    return response()->json(['error' => 'El token ha expirado']);
             } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-                    return response()->json(['token_invalid'], $e->getStatusCode());
+                    return response()->json(['error' => 'El token es invalido']);
             } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
-                    return response()->json(['token_absent'], $e->getStatusCode());
+                    return response()->json(['error' => 'El token es invalido']);
             } catch (Tymon\JWTAuth\Exceptions\TokenBlacklistedException $e) {
                     return response()->json('error');
             }
