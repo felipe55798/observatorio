@@ -39,7 +39,8 @@ class ViolencemeterController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name'=>['required', 'string', 'max:255', 'unique:violencemeters'],
-            'gravity' => ['required', 'numeric']
+            'risk_level' => ['required', 'string','in:alert,reaction,urgent'],
+            'attention_route' => ['required', 'string']
         ]);
 
         if($validator->fails()){
@@ -48,7 +49,8 @@ class ViolencemeterController extends Controller
 
         Violencemeter::create([
             'name'=>$request->get('name'),
-            'gravity'=>$request->get('gravity')
+            'risk_level'=>$request->get('risk_level'),
+            'attention_route'=>$request->get('attention_route')
         ]);
 
         return response()->json(['message'=>'Nuevo item creado'], 201);
@@ -87,7 +89,8 @@ class ViolencemeterController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name'=>['required', 'string', 'max:255', 'unique:violencemeters'],
-            'gravity' => ['required', 'numeric']
+            'risk_level' => ['required', 'string','in:alert,reaction,urgent'],
+            'attention_route' => ['required', 'string']
         ]);
 
         if($validator->fails()){
@@ -95,7 +98,8 @@ class ViolencemeterController extends Controller
         }
 
         $violencemeter->name = $request->get('name');
-        $violencemeter->gravity = $request->get('gravity');
+        $violencemeter->risk_level = $request->get('risk_level');
+        $violencemeter->attention_route = $request->get('attention_route');
         $violencemeter->save();
         return response()->json(['message'=>'Item actualizado'], 200);
     }

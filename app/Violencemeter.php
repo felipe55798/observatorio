@@ -8,6 +8,7 @@ class Violencemeter extends Model
 {
     protected $fillable = [
         'name',
-        'gravity'
+        'risk_level',
+        'attention_route'
     ];
 }

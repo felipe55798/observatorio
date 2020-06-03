@@ -16,7 +16,8 @@ class CreateViolencemetersTable extends Migration
         Schema::create('violencemeters', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->integer('gravity');
+            $table->enum('risk_level', ['alert', 'reaction', 'urgent']);
+            $table->longText('attention_route');
             $table->timestamps();
         });
     }
